@@ -190,4 +190,5 @@ class UsuarioController
             echo json_encode(['erro'=>'Erro ao excluir usuário1']);
         }
     }
-}
+
+    }
