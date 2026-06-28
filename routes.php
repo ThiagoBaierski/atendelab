@@ -5,12 +5,25 @@ require_once __DIR__ . '/app/Controllers/UsuariosController.php';
 require_once __DIR__ . '/app/Middleware/auth.php';
 require_once __DIR__ . '/app/Controllers/TiposAtendimentosController.php';
 require_once __DIR__ . '/app/Controllers/AtendimentosController.php';
+require_once __DIR__ . '/app/Controllers/PessoasController.php';
+require_once __DIR__ . '/app/Controllers/FrontendController.php';
 
 $controller = $_GET['controller'] ?? 'auth';
 $action = $_GET['action'] ?? 'login';
 
 
 switch ($controller) {
+    case 'frontend':
+        exigirAutenticacao();
+
+        $frontendController = new FrontendController();
+        switch($action){
+            case 'pessoas':
+                $frontendController->pessoas();
+                break;
+
+        }
+        break;
     case 'tipos':
         exigirAutenticacao();
         
@@ -31,6 +44,32 @@ switch ($controller) {
                 break;
             case 'inativar':
                 $tiposController->inativar();
+                break;
+            default:
+            responderRotaNaoEncontrada('Ação de tipos de atendimento não encontrada');
+
+        }
+        break;
+    case 'pessoas':
+        exigirAutenticacao();
+        
+        $PessoasController = new PessoasController();
+
+        switch ($action) {
+            case 'listar':
+                $PessoasController->listar();
+                break;
+            case 'buscarPorId':
+                $PessoasController->buscarPorId();
+                break;
+            case 'criar':
+                $PessoasController->criar();
+                break;
+            case 'atualizar':
+                $PessoasController->atualizar();
+                break;
+            case 'inativar':
+                $PessoasController->inativar();
                 break;
             default:
             responderRotaNaoEncontrada('Ação de tipos de atendimento não encontrada');

@@ -1,7 +1,7 @@
 window.AtendeLabApi = (() => {
     const baseUrl = '/atendelab/public/';
 
-    async function request(controller,action, {method = 'GET', query = {}, body = null} {}) {
+    async function request(controller,action, {method = 'GET', query = {}, body = null} = {}) {
         const params = new URLSearchParams({controller,action, ...query});
         const options = {method, credentials: 'same-origin'};
 
@@ -65,3 +65,4 @@ window.AtendeLabApi = (() => {
         showAlert
     };
 })();
+

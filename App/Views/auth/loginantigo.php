@@ -39,8 +39,8 @@
                         'UTF-8'
                     ) ?>
                 </div>
-                <?php endif;?>
-                <form method="post" action="?controller=auth&action=entrar">
+                <?php endif; ?>
+                <form method="post" action="<?= $baseUrl ?>?controller=auth&action=entrar">
                     <div class="mb-3">
                         <label for="email" class="form-label">
                             E-mail

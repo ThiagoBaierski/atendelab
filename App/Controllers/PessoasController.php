@@ -28,7 +28,7 @@ class PessoasController
         
     }
 
-    public function buscar(): void
+    public function buscarPorId(): void
     {
         $id = filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT);
 
