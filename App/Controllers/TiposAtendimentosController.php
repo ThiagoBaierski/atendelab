@@ -6,14 +6,14 @@ class TiposAtendimentosController
 
     public function __construct()
     {
-        require __DIR__ . '/../../config/database.php/';
+        require __DIR__ . '/../../Config/database.php';
         $this->pdo = $pdo;
     }
 
     private function json(array $dados, int $status = 200): void
     {
         http_response_code($status);
-        header('Content-Type: aplication/json;charset=utf-8');
+        header('Content-Type: application/json; charset=utf-8');
         echo json_encode($dados, JSON_UNESCAPED_UNICODE);
     }
 
@@ -50,7 +50,7 @@ class TiposAtendimentosController
     {
         $nome = trim($_POST['nome'] ?? '');
         $descricao = trim($_POST['descricao'] ?? '');
-        $status = $_POST['status' ?? 'ativo'];
+        $status = $_POST['status'] ?? 'ativo';
 
         if ($nome === ''){
             $this->json(['erro' => 'Nome é obrigatório'],422);

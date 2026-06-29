@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/app/Controllers/AuthController.php';
-require_once __DIR__ . '/app/Controllers/UsuariosController.php';
-require_once __DIR__ . '/app/Middleware/auth.php';
-require_once __DIR__ . '/app/Controllers/TiposAtendimentosController.php';
-require_once __DIR__ . '/app/Controllers/AtendimentosController.php';
-require_once __DIR__ . '/app/Controllers/PessoasController.php';
-require_once __DIR__ . '/app/Controllers/FrontendController.php';
+require_once __DIR__ . '/App/Controllers/AuthController.php';
+require_once __DIR__ . '/App/Controllers/UsuariosController.php';
+require_once __DIR__ . '/App/Middleware/auth.php';
+require_once __DIR__ . '/App/Controllers/TiposAtendimentosController.php';
+require_once __DIR__ . '/App/Controllers/AtendimentosController.php';
+require_once __DIR__ . '/App/Controllers/PessoasController.php';
+require_once __DIR__ . '/App/Controllers/FrontendController.php';
 
 $controller = $_GET['controller'] ?? 'auth';
 $action = $_GET['action'] ?? 'login';
@@ -21,6 +21,15 @@ switch ($controller) {
             case 'pessoas':
                 $frontendController->pessoas();
                 break;
+            case 'tipos':
+                $frontendController->tipos();
+                break;
+            case 'atendimentos':
+                $frontendController->atendimentos();
+                break;
+            default:
+                http_response_code(404);
+                echo 'Ação de frontend não encontrada';
 
         }
         break;
@@ -46,7 +55,8 @@ switch ($controller) {
                 $tiposController->inativar();
                 break;
             default:
-            responderRotaNaoEncontrada('Ação de tipos de atendimento não encontrada');
+                http_response_code(404);
+                echo 'Ação de tipos de atendimento não encontrada';
 
         }
         break;
@@ -72,7 +82,8 @@ switch ($controller) {
                 $PessoasController->inativar();
                 break;
             default:
-            responderRotaNaoEncontrada('Ação de tipos de atendimento não encontrada');
+                http_response_code(404);
+                echo 'Ação de pessoas não encontrada';
 
         }
         break;
@@ -100,7 +111,8 @@ switch ($controller) {
                 $atendimentosController->opcoesFormulario();
                 break;
             default:
-            responderRotaNaoEncontrada('Ação de atendimento não encontrada');
+                http_response_code(404);
+                echo 'Ação de atendimento não encontrada';
 
         }
         break;

@@ -5,21 +5,31 @@ class FrontendController
     private PDO $pdo;
 
     public function __construct(){
-        require __DIR__ . '/../../config/database.php';
+        require __DIR__ . '/../../Config/database.php';
         $this->pdo = $pdo;
     }
 
-    private function json(array $dados, int $status = 200): void
+    private function render(string $view): void
     {
-        http_response_code($status);
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($dados, JSON_UNESCAPED_UNICODE);
+        require __DIR__ . '/../Views/' . $view;
     }
 
     public function pessoas(): void
     {
-        header('Location: ?controller=frontend&action=pessoas');
-        exit;
+        $tituloPagina = 'Pessoas atendidas';
+        $this->render('pessoas/index.php');
+    }
+
+    public function tipos(): void
+    {
+        $tituloPagina = 'Tipos de atendimento';
+        $this->render('tipos-atendimentos/index.php');
+    }
+
+    public function atendimentos(): void
+    {
+        $tituloPagina = 'Atendimentos';
+        $this->render('atendimentos/index.php');
     }
 
 }

@@ -5,7 +5,7 @@ class UsuariosController
     private PDO $pdo;
     public function __construct()
     {
-        require __DIR__ . '/../../config/database.php';
+        require __DIR__ . '/../../Config/database.php';
         $this->pdo = $pdo;
     }
     public function listar() :void
