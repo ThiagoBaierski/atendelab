@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 30/06/2026 às 00:07
+-- Tempo de geração: 30/06/2026 às 00:30
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.1.25
 
@@ -45,7 +45,7 @@ CREATE TABLE `atendimentos` (
 --
 
 INSERT INTO `atendimentos` (`id`, `tipo_atendimento_id`, `pessoa_id`, `usuario_id`, `data_atendimento`, `hora_atendimento`, `descricao`, `observacao_final`, `status`, `criado_em`) VALUES
-(1, 1, 1, 1, '2026-06-09', '20:58:00', 'Solicitação de boletim escolar', 'Solicitação completa e documento enviado', '', '2026-06-10 22:47:33');
+(1, 1, 1, 1, '2026-06-09', '20:58:00', 'Solicitação de boletim escolar', 'Solicitação completa e documento enviado', 'aberto', '2026-06-10 22:47:33');
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,8 @@ CREATE TABLE `tipos_atendimento` (
 --
 
 INSERT INTO `tipos_atendimento` (`id`, `nome`, `descricao`, `status`, `criado_em`, `atualizado_em`) VALUES
-(1, 'Boletim', 'Solicitação de boletim escolar', 'ativo', '2026-06-10 22:47:33', '2026-06-29 22:05:39');
+(1, 'Boletim', 'Solicitação de boletim escolar', 'ativo', '2026-06-10 22:47:33', '2026-06-29 22:05:39'),
+(2, 'Segunda Chamada', 'Solicitação de Segunda Chamada', 'ativo', '2026-06-29 22:15:24', '2026-06-29 22:15:24');
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,7 @@ ALTER TABLE `pessoas`
 -- AUTO_INCREMENT de tabela `tipos_atendimento`
 --
 ALTER TABLE `tipos_atendimento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
