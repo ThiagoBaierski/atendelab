@@ -19,11 +19,8 @@ class AtendimentosController
 
     public function listar(): void
     {
-        $sql = 'SELECT a.id, p.nome AS pessoa_nome,
-                       t.nome AS tipo_nome,
-                       u.nome AS responsavel_nome,
-                       a.descricao, a.status,
-                       a.data_atendimento, a.hora_atendimento,
+        $sql = 'SELECT a.id, p.nome AS pessoa_nome, t.nome AS tipo_nome, u.nome AS responsavel_nome,
+                       a.descricao, a.status, a.data_atendimento, a.hora_atendimento,
                        a.observacao_final
                 FROM atendimentos a
                 INNER JOIN pessoas p ON p.id = a.pessoa_id
@@ -141,7 +138,6 @@ class AtendimentosController
 
     public function opcoesFormulario(): void
     {
-        // Implementação básica - pode ser expandida conforme necessidade
         $this->json(['erro' => '???.'], 501);
     }
 }
